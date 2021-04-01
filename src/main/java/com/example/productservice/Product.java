@@ -1,8 +1,17 @@
 package com.example.productservice;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String title;
     private String description;
     private String thumbnail_url;
@@ -12,21 +21,19 @@ public class Product {
 
     }
 
-    public Product(String id, String title, String description, String thumbnail_url, float price) {
-        super();
-        this.id = id;
+    public Product( String title, String description, String thumbnail_url, float price) {
         this.title = title;
         this.description = description;
         this.thumbnail_url = thumbnail_url;
         this.price = price;
     }
 
-    public String getId() {
-        return id;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -60,5 +67,6 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
 
 }
